@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torchtpu-doctor"
+version = "0.1.0"
+description = "Agent skill, AST linter, dispatch profiler, and 128-tile padding utilities for PyTorch on Cloud TPUs (torch_tpu)."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.9"
+authors = [
+  { name = "Jigyasa Grover" },
+]
+dependencies = []
+
+[project.optional-dependencies]
+examples = ["torch>=2.4.0", "transformers>=4.44.0", "peft>=0.12.0", "matplotlib>=3.7.0"]
+dev = ["pytest>=7.0.0", "torch>=2.4.0"]
+
+[project.urls]
+Repository = "https://github.com/jigyasa-grover/TorchTPU-Doctor"
+
+[project.scripts]
+torchtpu-doctor = "torchtpu_doctor.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
